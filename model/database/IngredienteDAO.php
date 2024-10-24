@@ -24,7 +24,7 @@ class IngredienteDAO {
                 . "where idingredientes = :pidingredientes";
         $conn = DB::getInstancia()->prepare($query);
         $conn->execute(array(':pdescricao'=>$obj->descricao,
-                      ':pidingredientes'=>$obj->idingredientes));
+                      ':pidingredientes'=>$obj->idIngredientes));
         return $conn->rowCount()>0;
     }
     

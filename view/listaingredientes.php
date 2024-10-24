@@ -8,9 +8,9 @@
   <title>Doceria Dark Moon</title>
   
   <script type="text/javascript">
-      function deletar(idingredientes){
+      function deletar(idIngredientes){
           if(confirm('deseja excluir o registro?')){
-              document.location.href='../controller/ingredienteBO.php?acao=deletar&idingredientes='+idingredientes;
+              document.location.href='../controller/ingredienteBO.php?acao=deletar&idIngredientes='+idIngredientes;
           }
       }
   </script>
@@ -62,13 +62,13 @@
                 foreach ($lista as $value) {
             ?>
             <tr>
-              <td><?php echo $value->idingredientes;?></td>
+              <td><?php echo $value->idIngredientes;?></td>
               <td><?php echo $value->descricao;?></td>
               <td>
-                  <button name="btnalterar" onclick="location.href='updingredientes.php?idingredientes=<?php echo $value->idingredientes;?>'">Alterar</button>
+                  <button name="btnalterar" onclick="location.href='updingredientes.php?idIngredientes=<?php echo $value->idIngredientes;?>'">Alterar</button>
               </td>
               <td>
-                  <button name="btnexcluir" onclick="javascript:deletar(<?php echo $value->idingredientes;?>)">Excluir</button>
+                  <button name="btnexcluir" onclick="javascript:deletar(<?php echo $value->idIngredientes;?>)">Excluir</button>
               </td>
             </tr>
             <?php

@@ -37,8 +37,8 @@
           <?php
             include_once '../model/database/IngredienteDAO.php';
             $dao = new IngredienteDAO();
-            $id = $_GET['idingredientes'];
-            $lista = $dao->list(id);
+            $id = $_GET['idIngredientes'];
+            $lista = $dao->list($id);
             foreach ($lista as $value) {
                 
             
@@ -46,7 +46,7 @@
               <label>Nome:</label>
               <input type="text" name="txtnome" value="<?php echo $value->descricao;?>"><br><br>
           <input type="hidden" name="acao" value="alterar"/>
-          <input type="hidden" name="idingredientes" value="<?php echo $value->idingredientes; ?>"/>
+          <input type="hidden" name="idIngredientes" value="<?php echo $value->idIngredientes; ?>"/>
           <input type="submit" name="btnAlterar" value="Alterar"/>
           <input type="reset" name="btnLimpar" value="Limpar"/>
           <?php

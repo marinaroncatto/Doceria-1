@@ -2,9 +2,9 @@
 include_once '../model/Ingrediente.php';
 include_once '../model/database/IngredienteDAO.php';
 
-if (isset($_POST['acao'])){
+if (isset($_REQUEST['acao'])){
 
-$acao = $_POST['acao'];
+$acao = $_REQUEST['acao'];
     
     switch ($acao) {
         case 'inserir':
@@ -40,26 +40,70 @@ $acao = $_POST['acao'];
             }
             break;
         case 'alterar':
+            
+            if(isset($_POST['idIngredientes']) && isset($_POST['txtnome']) && !empty($_POST['txtnome'])){
+            $dao = new IngredienteDAO();                                         
             $objeto = new Ingrediente();
-            $objeto->idingredientes = 6;
-            $objeto->descricao = 'Aveia';
+            $objeto->idIngredientes = $_POST['idIngredientes'];
+            $objeto->descricao = $_POST['txtnome'];
             if($dao->update($objeto)){
-                echo 'Ingrediente atualizado.';
-                echo '<hr/>';
+                        ?>
+                    <script type="text/javascript">
+                        alert('Ingrediente alterado com sucesso.');
+                        location.href = '../view/listaingredientes.php';
+                    </script>
+                    <?php
+                }else{
+                    ?>
+                    <script type="text/javascript">
+                        alert('Problema ao alterar o ingrediente');
+                        history.go(-1);
+                    </script>
+                    <?php
+                }  
+            
+            }else{
+                ?>
+                    <script type="text/javascript">
+                        alert('Prencha o campo adequadamente.');
+                        history.go(-1);
+                    </script>
+                <?php
             }
             break;
         case 'deletar':
-            $id = 6;
+             if(isset($_GET['idIngredientes'])){
+            $dao = new IngredienteDAO(); 
+            $id = $_GET['idIngredientes'];
             if($dao->delete($id)){
-                echo 'Registro apagado.';
-                echo '<hr/>';
-            }
+                ?>
+                    <script type="text/javascript">
+                        alert('Ingrediente deletado com sucesso.');
+                        location.href = '../view/listaingredientes.php';
+                    </script>
+                    <?php
+                }else{
+                    ?>
+                    <script type="text/javascript">
+                        alert('Problema ao deletar o ingrediente');
+                        history.go(-1);
+                    </script>
+                    <?php
+                }  
+                
+                
+            }else{
+                ?>
+                    <script type="text/javascript">
+                        alert('Prencha o campo adequadamente.');
+                        history.go(-1);
+                    </script>
+                <?php
             break;
-        default:
-
-            break;
+       
  
-            }        
+            }
+    }
 }       
 
 ?>
