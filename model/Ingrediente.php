@@ -2,7 +2,7 @@
 
 class Ingrediente {
     
-    private $idIngredientes;
+    private $idingredientes;
     private $descricao;
     
     public function __construct() {
@@ -16,8 +16,6 @@ class Ingrediente {
     public function __set($param,$value) {
         $this->$param = $value;
     }
-  
-    
     
 }
 ?>

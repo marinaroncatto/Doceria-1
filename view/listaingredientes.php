@@ -8,9 +8,9 @@
   <title>Doceria Dark Moon</title>
   
   <script type="text/javascript">
-      function deletar(idIngredientes){
+      function deletar(idingredientes){
           if(confirm('deseja excluir o registro?')){
-              document.location.href='../controller/ingredienteBO.php?acao=deletar&idIngredientes='+idIngredientes;
+              document.location.href='../controller/ingredienteBO.php?acao=deletar&idingredientes='+idingredientes;
           }
       }
   </script>
@@ -29,17 +29,16 @@
       </div>
     </div>
     <div class="menu-horizontal">
-      <ul>
-          <li><a href="principal.php">Início</a></li>
-        <li><a href="#">Login</a></li>
-      </ul>
+        <?php
+            include_once './menulateral.php';
+        ?>
     </div>
     <div class="container">
       <div class="menu-lateral">
         <ul>
-          <li><a href="listaingredientes.php">Ingredientes</a></li>
-          <li><a href="#">Receitas</a></li>
-          <li><a href="#">Sair</a></li>
+            <?php
+                include_once './menu.php';
+            ?>         
         </ul>
       </div>
       <div class="conteudo">
@@ -62,13 +61,13 @@
                 foreach ($lista as $value) {
             ?>
             <tr>
-              <td><?php echo $value->idIngredientes;?></td>
+              <td><?php echo $value->idingredientes;?></td>
               <td><?php echo $value->descricao;?></td>
               <td>
-                  <button name="btnalterar" onclick="location.href='updingredientes.php?idIngredientes=<?php echo $value->idIngredientes;?>'">Alterar</button>
+                  <button name="btnalterar" onclick="location.href='updingredientes.php?idingredientes=<?php echo $value->idingredientes;?>'">Alterar</button>
               </td>
               <td>
-                  <button name="btnexcluir" onclick="javascript:deletar(<?php echo $value->idIngredientes;?>)">Excluir</button>
+                  <button name="btnexcluir" onclick="javascript:deletar(<?php echo $value->idingredientes;?>)">Excluir</button>
               </td>
             </tr>
             <?php
