@@ -6,6 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="./favicon.png" type="image/png">
   <title>Cadastro - Doceria Dark Moon</title>
+    <?php
+    include_once '../model/Login.php';
+    Login::verificaSessao();
+  ?>
   <link rel="stylesheet" href="../css/estilo.css">
 </head>
 <body>
@@ -32,7 +36,7 @@
       </div>      
       <div class="conteudo">
           <h2>Cadastro de receitas</h2>
-          <form action="#" method="post">
+          <form action="../controller/ReceitaBO.php" method="post">
           <label>Nome:</label>
           <input type="text" name="txtnome"><br><br>
           <input type="hidden" name="acao" value="inserir"/>

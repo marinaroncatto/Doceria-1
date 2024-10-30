@@ -6,6 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="./favicon.png" type="image/png">
   <title>Cadastro - Doceria Dark Moon</title>
+    <?php
+    include_once '../model/Login.php';
+    Login::verificaSessao();
+  ?>
   <link rel="stylesheet" href="../css/estilo.css">
 </head>
 <body>
@@ -32,12 +36,23 @@
       </div>      
       <div class="conteudo">
           <h2>Alteração de receitas</h2>
-          <form action="#" method="post">
+          <form action="../controller/ReceitaBO.php" method="post">
+           <?php
+            include_once '../model/database/ReceitaDAO.php';
+            $dao = new ReceitaDAO();
+            $id = $_GET['idReceita'];
+            $lista = $dao->list($id);
+            foreach ($lista as $value) {
+          ?>    
           <label>Nome:</label>
-          <input type="text" name="txtnome"><br><br>
-          <input type="hidden" name="acao" value="inserir"/>
+          <input type="text" name="txtnome" value="<?php echo $value->nome;?>"><br><br>
+          <input type="hidden" name="acao" value="alterar"/>
+          <input type="hidden" name="idReceita" value="<?php echo $value->idReceita;?>"/>
           <input type="submit" name="btnCadastrar" value="Alterar"/>
           <input type="reset" name="btnLimpar" value="Limpar"/>
+           <?php 
+                }
+            ?>
         </form>
       </div>
     </div>

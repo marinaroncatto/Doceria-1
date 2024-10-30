@@ -19,10 +19,10 @@ $acao = $_REQUEST['acao'];
                     ?>
                     <script type="text/javascript">
                         alert('Receita salva com sucesso.');
-                        location.href = '../view/listaingredientes.php';
+                        location.href = '../view/listareceita.php';
                     </script>
                     <?php
-                }else{
+                        }else{
                     ?>
                     <script type="text/javascript">
                         alert('Problema ao salvar receita');
@@ -30,33 +30,34 @@ $acao = $_REQUEST['acao'];
                     </script>
                     <?php
                 }
-            }else{
+                    }else{
                 ?>
                     <script type="text/javascript">
                         alert('Prencha o campo adequadamente.');
                         history.go(-1);
                     </script>
                 <?php
-            }
-            break;
-        case 'alterar':
+                     }
+                     break;
             
-            if(isset($_POST['idIngredientes']) && isset($_POST['txtnome']) && !empty($_POST['txtnome'])){
-            $dao = new IngredienteDAO();                                         
-            $objeto = new Ingrediente();
-            $objeto->idIngredientes = $_POST['idIngredientes'];
-            $objeto->descricao = $_POST['txtnome'];
+             case 'alterar':
+            
+            if(isset($_POST['idReceita']) && isset($_POST['txtnome']) && !empty($_POST['txtnome'])){
+            $dao = new ReceitaDAO();                                         
+            $objeto = new Receita();
+            $objeto->idReceita = $_POST['idReceita'];
+            $objeto->nome = $_POST['txtnome'];
             if($dao->update($objeto)){
                         ?>
                     <script type="text/javascript">
-                        alert('Ingrediente alterado com sucesso.');
-                        location.href = '../view/listaingredientes.php';
+                        alert('Receita alterada com sucesso.');
+                        location.href = '../view/listareceita.php';
                     </script>
                     <?php
-                }else{
+                        }else{
                     ?>
                     <script type="text/javascript">
-                        alert('Problema ao alterar o ingrediente');
+                        alert('Problema ao alterar receita');
                         history.go(-1);
                     </script>
                     <?php
@@ -71,21 +72,22 @@ $acao = $_REQUEST['acao'];
                 <?php
             }
             break;
+            
         case 'deletar':
-             if(isset($_GET['idIngredientes'])){
-            $dao = new IngredienteDAO(); 
-            $id = $_GET['idIngredientes'];
+             if(isset($_GET['idReceita'])){
+            $dao = new ReceitaDAO(); 
+            $id = $_GET['idReceita'];
             if($dao->delete($id)){
                 ?>
                     <script type="text/javascript">
-                        alert('Ingrediente deletado com sucesso.');
-                        location.href = '../view/listaingredientes.php';
+                        alert('Receita deletada com sucesso.');
+                        location.href = '../view/listareceita.php';
                     </script>
                     <?php
                 }else{
                     ?>
                     <script type="text/javascript">
-                        alert('Problema ao deletar o ingrediente');
+                        alert('Problema ao deletar receita');
                         history.go(-1);
                     </script>
                     <?php

@@ -6,7 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="./favicon.png" type="image/png">
   <title>Doceria Dark Moon</title>
-  
+    <?php
+    include_once '../model/Login.php';
+    Login::verificaSessao();
+  ?>
   <script type="text/javascript">
       function deletar(idingredientes){
           if(confirm('deseja excluir o registro?')){

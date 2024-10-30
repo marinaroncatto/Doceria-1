@@ -1,6 +1,6 @@
 <?php
 
-include_once './DB.php';
+include_once 'DB.php';
 class ReceitaDAO {
      public function list($id = null) {
         $where = ($id ? "where idReceita = $id":'');
@@ -19,7 +19,7 @@ class ReceitaDAO {
     
     public function update(Receita $obj) {
         $query = "UPDATE receita set nome = :pnome "
-                . "where idReceita = :idReceita";
+                . "where idReceita = :pidReceita";
         $conn = DB::getInstancia()->prepare($query);
         $conn->execute(array(':pnome'=>$obj->nome,
                       ':pidReceita'=>$obj->idReceita));
