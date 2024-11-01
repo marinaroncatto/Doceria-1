@@ -9,6 +9,13 @@
     include_once '../model/Login.php';
     Login::verificaSessao();
   ?>
+     <script type="text/javascript">
+      function deletar(iditem){
+          if(confirm('deseja excluir o registro?')){
+              document.location.href='../controller/ItemBO.php?acao=deletar&iditem='+iditem;
+          }
+      }
+  </script>
     <link rel="stylesheet" href="../css/estilo.css">
 </head>
 <body>
@@ -39,20 +46,23 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Receita</th>
+                            <th>Item</th>
                             <th>Ingrediente</th>
-                            <th>Quantidade</th>
+                            <th>Validade</th>
+                            <th>Valor</th>
                             <th></th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
                         <!-- Dados da listagem -->
+                            
                         <tr>
                             <td>1</td>
                             <td>Receita 1</td>
                             <td>Ingrediente 1</td>
                             <td>10</td>
+                            <td>10</td>                      
                             <td>
                                 <button name="btnalterar" onclick="location.href='upditem.php'">Alterar</button>
                             </td>
