@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="./favicon.png" type="image/png">
     <title>Doceria Dark Moon - Consulta</title>
-      <?php
-    include_once '../model/Login.php';
-    Login::verificaSessao();
-  ?>
+    <?php
+      include_once '../model/Login.php';
+      Login::verificaSessao();
+    ?>
     <link rel="stylesheet" href="../css/estilo.css">
 </head>
 <body>
